@@ -9,14 +9,15 @@
         }
     },
     "routes": [
-        { "src": "/assets/(.*)", "dest": "/public/assets/$1" },
-        { "src": "/api/(.*)", "dest": "/api/$1" },
-        { "src": "/style.css", "dest": "/public/style.css" },
-        { "src": "/(.*)\.php", "dest": "/public/$1.php" },
+        { "src": "/assets/(?<path>.*)", "dest": "/public/assets/$path" },
+        { "src": "/api/(?<path>.*)", "dest": "/api/$path" },
+        { "src": "/style\.css", "dest": "/public/style.css" },
+        { "src": "/(?<file>[^\/]+)\.php", "dest": "/public/$file.php" },
         { "src": "/", "dest": "/public/index.php" },
-        { "src": "/(.+)", "dest": "/public/index.php?page=$1" }
+        { "src": "/(?<page>[^\/]+)", "dest": "/public/index.php?page=$page" }
     ],
     "env": {
-        "APP_ENV": "production"
+        "APP_ENV": "production",
+        "APP_DEBUG": "false"
     }
 }
