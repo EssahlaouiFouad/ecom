@@ -1,23 +1,29 @@
 {
-    "version": 2,
     "functions": {
-        "api/*.php": {
-            "runtime": "vercel-php@0.7.1"
-        },
-        "public/**/*.php": {
+        "api/index.php": {
             "runtime": "vercel-php@0.7.1"
         }
     },
     "routes": [
-        { "src": "/assets/(?<path>.*)", "dest": "/public/assets/$path" },
-        { "src": "/api/(?<path>.*)", "dest": "/api/$path" },
-        { "src": "/style\.css", "dest": "/public/style.css" },
-        { "src": "/(?<file>[^\/]+)\.php", "dest": "/public/$file.php" },
-        { "src": "/", "dest": "/public/index.php" },
-        { "src": "/(?<page>[^\/]+)", "dest": "/public/index.php?page=$page" }
-    ],
-    "env": {
-        "APP_ENV": "production",
-        "APP_DEBUG": "false"
-    }
+        {
+            "src": "/api/index.php",
+            "dest": "/api/index.php"
+        },
+        {
+            "src": "/style.css",
+            "dest": "/public/style.css"
+        },
+        {
+            "src": "/assets/img/(.*)",
+            "dest": "/public/assets/img/$1"
+        },
+        {
+            "src": "/assets/datas/data.json",
+            "dest": "/public/assets/datas/data.json"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/api/index.php"
+        }
+    ]
 }
